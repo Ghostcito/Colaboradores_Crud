@@ -34,7 +34,7 @@ $colaboradores = $service->getAll();
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form action="controller/ColaboradorController.php" method="POST">
+                    <form method="POST">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>

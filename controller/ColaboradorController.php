@@ -14,19 +14,18 @@ class ColaboradorController
 
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $colaborador = new Colaborador();
-            $colaborador->nombre = $_POST['nombre'];
-            $colaborador->cargo = $_POST['cargo'];
-            $colaborador->puesto = $_POST['puesto'];
-            $colaborador->edad = $_POST['edad'];
-            $colaborador->fecha_ingreso = $_POST['fecha_ingreso'];
+        $colaborador = new Colaborador();
+        $colaborador->nombre = $_POST['nombre'];
+        $colaborador->cargo = $_POST['cargo'];
+        $colaborador->puesto = $_POST['puesto'];
+        $colaborador->edad = $_POST['edad'];
+        $colaborador->fecha_ingreso = $_POST['fecha_ingreso'];
 
-            if ($this->colaboradorService->create($colaborador)) {
-                header('Location: /colaboradores_crud/');
-                exit();
-            }
+        if ($this->colaboradorService->create($colaborador)) {
+            header('Location: /colaboradores_crud/');
+            exit();
         }
+
     }
 
     public function edit($id)
