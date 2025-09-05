@@ -12,15 +12,8 @@ class ColaboradorController
         $this->colaboradorService = new ColaboradorService();
     }
 
-    public function create()
+    public function create($colaborador)
     {
-        $colaborador = new Colaborador();
-        $colaborador->nombre = $_POST['nombre'];
-        $colaborador->cargo = $_POST['cargo'];
-        $colaborador->puesto = $_POST['puesto'];
-        $colaborador->edad = $_POST['edad'];
-        $colaborador->fecha_ingreso = $_POST['fecha_ingreso'];
-
         if ($this->colaboradorService->create($colaborador)) {
             header('Location: /colaboradores_crud/');
             exit();
@@ -30,22 +23,17 @@ class ColaboradorController
 
     public function edit($id)
     {
-        $colaborador = $this->colaboradorService->getById($id);
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $colaborador->nombre = $_POST['nombre'];
-            $colaborador->cargo = $_POST['cargo'];
-            $colaborador->puesto = $_POST['puesto'];
-            $colaborador->edad = $_POST['edad'];
-            $colaborador->fecha_ingreso = $_POST['fecha_ingreso'];
-
-            if ($this->colaboradorService->update($colaborador)) {
-                header('Location: /colaboradores_crud/');
-                exit();
-            }
-        }
-
+        return $this->colaboradorService->getById($id);
     }
+
+    public function update($colaborador)
+    {
+        if ($this->colaboradorService->update($colaborador)) {
+            header('Location: /colaboradores_crud/');
+            exit();
+        }
+    }
+
     public function delete($id)
     {
         if ($this->colaboradorService->delete($id)) {

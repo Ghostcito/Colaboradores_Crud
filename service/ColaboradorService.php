@@ -34,6 +34,8 @@ class ColaboradorService
         return $stmt->execute();
     }
 
+
+
     // Buscar por id
     public function getById($id)
     {
@@ -52,6 +54,7 @@ class ColaboradorService
                   WHERE id = :id";
         $stmt = $this->conn->prepare($query);
 
+        $stmt->bindParam(":id", $colaborador->id);
         $stmt->bindParam(":nombre", $colaborador->nombre);
         $stmt->bindParam(":cargo", $colaborador->cargo);
         $stmt->bindParam(":puesto", $colaborador->puesto);
